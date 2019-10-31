@@ -1,6 +1,16 @@
-# CourseProject
+# What is this application?
+
+This project was built to learn the basics of Angular. The application is a basic recipe book with a list of recipes and ingredients for each recipe. The application also has a shoppling list functionality. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
+
+
+## What I learnt? 
+
+How to use Bootstrap, Angular CLI, Angular Framework & TypeScript.
+
+More specifically in Angular: databinding, directives, components, routing/navigation, dependency injection, modules, optimization, RESTful servers, pipe lines, custom directives, authentication, services, Http Access & general Angular architechture.  
+
 
 ## Development server
 
