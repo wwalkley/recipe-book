@@ -8,8 +8,4 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "courseProject";
   currentPage = "recipe";
-
-  onNavigate(page: string) {
-    this.currentPage = page;
-  }
 }
