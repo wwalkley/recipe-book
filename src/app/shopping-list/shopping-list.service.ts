@@ -43,4 +43,9 @@ export class ShoppingListService {
       return false;
     }
   }
+
+  updateIngredient(index: number, updatedIngredient: Ingredient) {
+    this.ingredients[index] = updatedIngredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
 }

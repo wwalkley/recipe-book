@@ -29,10 +29,12 @@
       <div class="row">
         <div class="col-xs-12">
           <button class="btn btn-success" type="submit" [disabled]="!f.valid">
-            Add
+            {{ editMode ? "Update" : "Add" }}
           </button>
           <button class="btn btn-danger" type="button">Delete item</button>
-          <button class="btn btn-primary" type="button">Clear</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()">
+            Clear
+          </button>
         </div>
       </div>
     </form>
