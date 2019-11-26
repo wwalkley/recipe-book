@@ -1,3 +1,4 @@
+import { RecipesResolverService } from "./recipes/recipes-resolver.service";
 import { DataStorageService } from "./shared/data-storage.service";
 import { RecipeService } from "./recipes/recipe.service";
 import { ShoppingListService } from "./shopping-list/shopping-list.service";
@@ -39,7 +40,12 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    DataStorageService,
+    RecipesResolverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
