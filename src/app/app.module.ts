@@ -20,6 +20,7 @@ import { RecipeDefaultComponent } from "./recipes/recipe-default/recipe-default.
 import { EditComponent } from "./recipes/edit/edit.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthComponent } from "./authentication/auth.component";
+import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AuthComponent } from "./authentication/auth.component";
     DropdownDirective,
     RecipeDefaultComponent,
     EditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
