@@ -1,3 +1,4 @@
+import { AuthService } from "./authentication/auth.service";
 import { RecipesResolverService } from "./recipes/recipes-resolver.service";
 import { DataStorageService } from "./shared/data-storage.service";
 import { RecipeService } from "./recipes/recipe.service";
@@ -46,7 +47,8 @@ import { AuthComponent } from "./authentication/auth.component";
     ShoppingListService,
     RecipeService,
     DataStorageService,
-    RecipesResolverService
+    RecipesResolverService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
