@@ -1,6 +1,7 @@
-import { AuthService } from "./auth.service";
+import { AuthService, AuthResponseData } from "./auth.service";
 import { NgForm } from "@angular/forms";
 import { Component } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-auth",
@@ -22,38 +23,28 @@ export class AuthComponent {
     if (form.invalid) {
       return;
     }
+    let authenticationObservable: Observable<AuthResponseData>;
+    const email = form.value.email;
+    const password = form.value.password;
 
+    this.isLoading = true;
     if (this.isLoginMode) {
-    }
-
-    if (!this.isLoginMode) {
-      const email = form.value.email;
-      const password = form.value.password;
+      authenticationObservable = this.authService.logIn(email, password);
+    } else {
       this.isLoading = true;
-
-      this.authService.signUp(email, password).subscribe(
-        responseData => {
-          this.isLoading = false;
-        },
-        errorResponse => {
-          const message = errorResponse.error.error.message;
-          switch (message) {
-            case "OPERATION_NOT_ALLOWED":
-              this.error = "Password sign-in is disabled for this project";
-              break;
-            case "TOO_MANY_ATTEMPTS_TRY_LATER":
-              this.error =
-                "We have blocked all requests from this device due to unusual activity. Try again later";
-              break;
-            case "EMAIL_EXISTS":
-              this.error =
-                "The email address is already in use by another account";
-              break;
-          }
-          this.isLoading = false;
-        }
-      );
-      form.reset();
+      authenticationObservable = this.authService.signUp(email, password);
     }
+
+    authenticationObservable.subscribe(
+      responseData => {
+        console.log(responseData);
+        this.isLoading = false;
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+    );
+    form.reset();
   }
 }
