@@ -18,9 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeDefaultComponent } from './recipes/recipe-default/recipe-default.component';
 import { EditComponent } from './recipes/edit/edit.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './authentication/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './authentication/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,12 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     RecipeService,
     DataStorageService,
     RecipesResolverService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
