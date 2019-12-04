@@ -1,18 +1,18 @@
-import { Subscription } from "rxjs";
-import { AuthService } from "./../authentication/auth.service";
-import { DataStorageService } from "./../shared/data-storage.service";
+import { Subscription } from 'rxjs';
+import { AuthService } from './../authentication/auth.service';
+import { DataStorageService } from './../shared/data-storage.service';
 import {
   Component,
   EventEmitter,
   Output,
   OnInit,
   OnDestroy
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   collapsed = true;

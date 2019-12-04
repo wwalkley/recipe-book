@@ -1,35 +1,35 @@
-import { RecipesResolverService } from "./recipes/recipes-resolver.service";
-import { RecipeDefaultComponent } from "./recipes/recipe-default/recipe-default.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { EditComponent } from "./recipes/edit/edit.component";
-import { AuthComponent } from "./authentication/auth.component";
+import { RecipesResolverService } from './recipes/recipes-resolver.service';
+import { RecipeDefaultComponent } from './recipes/recipe-default/recipe-default.component';
+import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { EditComponent } from './recipes/edit/edit.component';
+import { AuthComponent } from './authentication/auth.component';
 
 const appRoutes: Routes = [
-  { path: "", redirectTo: "/recipes", pathMatch: "full" },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
-    path: "recipes",
+    path: 'recipes',
     component: RecipesComponent,
     children: [
-      { path: "", component: RecipeDefaultComponent },
-      { path: "new", component: EditComponent },
+      { path: '', component: RecipeDefaultComponent },
+      { path: 'new', component: EditComponent },
       {
-        path: ":id",
+        path: ':id',
         component: RecipeDetailComponent,
         resolve: [RecipesResolverService]
       },
       {
-        path: ":id/edit",
+        path: ':id/edit',
         component: EditComponent,
         resolve: [RecipesResolverService]
       }
     ]
   },
-  { path: "shopping-list", component: ShoppingListComponent },
-  { path: "auth", component: AuthComponent }
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({

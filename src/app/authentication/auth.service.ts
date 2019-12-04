@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError, tap } from "rxjs/operators";
-import { throwError, Subject } from "rxjs";
-import { User } from "./user.model";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, Subject } from 'rxjs';
+import { User } from './user.model';
 
 export interface AuthResponseData {
   kind: string;
@@ -16,14 +16,14 @@ export interface AuthResponseData {
 
 @Injectable()
 export class AuthService {
-  apiKey = "AIzaSyCzOOEXjBCEMOx6QaZhQInK_D473EOK_f8";
+  apiKey = 'AIzaSyCzOOEXjBCEMOx6QaZhQInK_D473EOK_f8';
   constructor(private http: HttpClient) {}
   user = new Subject<User>();
 
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
           this.apiKey,
         {
           email,
@@ -47,7 +47,7 @@ export class AuthService {
   logIn(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
           this.apiKey,
         {
           email,
@@ -68,33 +68,33 @@ export class AuthService {
       );
   }
   private handleError(errorResponse: HttpErrorResponse) {
-    let errorMessege = "An unknown error occured.";
+    let errorMessege = 'An unknown error occured.';
     if (!errorResponse.error || !errorResponse.error.error) {
       return throwError(errorMessege);
     }
     const message = errorResponse.error.error.message;
     switch (message) {
-      case "OPERATION_NOT_ALLOWED":
-        errorMessege = "Password sign-in is disabled for this project";
+      case 'OPERATION_NOT_ALLOWED':
+        errorMessege = 'Password sign-in is disabled for this project';
         break;
-      case "TOO_MANY_ATTEMPTS_TRY_LATER":
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
         errorMessege =
-          "We have blocked all requests from this device due to unusual activity. Try again later";
+          'We have blocked all requests from this device due to unusual activity. Try again later';
         break;
-      case "EMAIL_EXISTS":
-        errorMessege = "The email address is already in use by another account";
+      case 'EMAIL_EXISTS':
+        errorMessege = 'The email address is already in use by another account';
         break;
-      case "EMAIL_NOT_FOUND":
+      case 'EMAIL_NOT_FOUND':
         errorMessege =
-          "There is no user record corresponding to this identifier. The user may have been deleted.";
+          'There is no user record corresponding to this identifier. The user may have been deleted.';
         break;
-      case "INVALID_PASSWORD":
+      case 'INVALID_PASSWORD':
         errorMessege =
-          "The password is invalid or the user does not have a password.";
+          'The password is invalid or the user does not have a password.';
         break;
-      case "USER_DISABLED":
+      case 'USER_DISABLED':
         errorMessege =
-          "The user account has been disabled by an administrator.";
+          'The user account has been disabled by an administrator.';
         break;
     }
     return throwError(errorMessege);

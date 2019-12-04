@@ -1,16 +1,16 @@
-import { ShoppingListService } from "./../shopping-list.service";
-import { Ingredient } from "./../../shared/ingredient.model";
-import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Subscription } from "rxjs";
+import { ShoppingListService } from './../shopping-list.service';
+import { Ingredient } from './../../shared/ingredient.model';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-shopping-edit",
-  templateUrl: "./shopping-edit.component.html",
-  styleUrls: ["./shopping-edit.component.css"]
+  selector: 'app-shopping-edit',
+  templateUrl: './shopping-edit.component.html',
+  styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  @ViewChild("f", { static: false }) form: NgForm;
+  @ViewChild('f', { static: false }) form: NgForm;
   subscription: Subscription;
   editedItemIndex: number;
   editMode = false;

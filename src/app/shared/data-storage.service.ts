@@ -1,9 +1,9 @@
-import { AuthService } from "./../authentication/auth.service";
-import { RecipeService } from "./../recipes/recipe.service";
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Recipe } from "../recipes/recipe.model";
-import { map, tap } from "rxjs/operators";
+import { AuthService } from './../authentication/auth.service';
+import { RecipeService } from './../recipes/recipe.service';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Recipe } from '../recipes/recipe.model';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class DataStorageService {
@@ -12,7 +12,7 @@ export class DataStorageService {
     private rService: RecipeService,
     private authService: AuthService
   ) {}
-  url = "https://recipe-book-8cb30.firebaseio.com/recipes/.json";
+  url = 'https://recipe-book-8cb30.firebaseio.com/recipes/.json';
   storeRecipes() {
     const recipes = this.rService.getRecipes();
     this.http.put(this.url, recipes).subscribe(response => {

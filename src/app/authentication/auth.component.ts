@@ -1,13 +1,13 @@
-import { Router } from "@angular/router";
-import { AuthService, AuthResponseData } from "./auth.service";
-import { NgForm } from "@angular/forms";
-import { Component } from "@angular/core";
-import { Observable } from "rxjs";
+import { Router } from '@angular/router';
+import { AuthService, AuthResponseData } from './auth.service';
+import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-auth",
-  templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.css"]
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
   isLoginMode = true;
@@ -40,7 +40,7 @@ export class AuthComponent {
       responseData => {
         console.log(responseData);
         this.isLoading = false;
-        this.router.navigate(["./recipes"]);
+        this.router.navigate(['./recipes']);
       },
       errorMessage => {
         this.error = errorMessage;
