@@ -1,17 +1,19 @@
 language: node_js
 node_js:
-  - "10"
+  - '10'
 dist: trusty
 sudo: required
 branches:
   only:
-  - master
+    - master
 before_script:
   - npm install -g @angular/cli
 
 jobs:
   include:
     - stage: lint
-      script: - ng lint
+      script:
+        - - ng lint
     - stage: build
-      script: - ng build --prod --base-href https://github.com/wwalkley/recipe-book
+      script:
+        - - ng build --prod --base-href https://github.com/wwalkley/recipe-book
