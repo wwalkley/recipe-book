@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
@@ -17,7 +18,7 @@ export interface AuthResponseData {
 @Injectable()
 export class AuthService {
   apiKey = 'AIzaSyCzOOEXjBCEMOx6QaZhQInK_D473EOK_f8';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   user = new BehaviorSubject<User>(null);
 
   signUp(email: string, password: string) {
@@ -109,5 +110,10 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+  }
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/auth']);
   }
 }
