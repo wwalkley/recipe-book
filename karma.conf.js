@@ -22,15 +22,15 @@ module.exports = function(config) {
     },
     reporters: ['progress', 'kjhtml'],
 
-    // customLaunchers: {
-    //     ChromeHeadlessNoSandbox: {
-    //       base: 'ChromeHeadless',
-    //       flags: ['--no-sandbox']
-    //     }
-    //   },
-    //   mime: {
-    //     'text/x-typescript': ['ts','tsx']
-    //   },
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
+    mime: {
+      'text/x-typescript': ['ts', 'tsx']
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
