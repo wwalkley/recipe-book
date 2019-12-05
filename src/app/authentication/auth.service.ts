@@ -149,10 +149,12 @@ export class AuthService {
       localData._token,
       new Date(localData._tokenExpirationDate)
     );
-
+    console.log(loadedUser);
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const duration = loadedUser.tokenExpiry.getTime() - new Date().getTime();
+      const duration: any =
+        new Date(localData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       console.log(duration + ' yo');
       this.autoLogout(duration);
     }
