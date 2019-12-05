@@ -22,6 +22,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './authentication/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './authentication/auth-interceptor.service';
+import { AuthGuard } from './authentication/auth.guard';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AuthInterceptorService } from './authentication/auth-interceptor.servic
     DataStorageService,
     RecipesResolverService,
     AuthService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

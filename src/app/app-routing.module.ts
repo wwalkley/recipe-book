@@ -7,12 +7,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { EditComponent } from './recipes/edit/edit.component';
 import { AuthComponent } from './authentication/auth.component';
+import { AuthGuard } from './authentication/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
     path: 'recipes',
     component: RecipesComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeDefaultComponent },
       { path: 'new', component: EditComponent },
@@ -28,7 +30,11 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  {
+    path: 'shopping-list',
+    component: ShoppingListComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'auth', component: AuthComponent }
 ];
 
