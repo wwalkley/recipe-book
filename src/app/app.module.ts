@@ -48,6 +48,7 @@ import { AuthGuard } from './authentication/auth.guard';
     HttpClientModule
   ],
   providers: [
+    AuthGuard,
     ShoppingListService,
     RecipeService,
     DataStorageService,
