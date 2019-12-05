@@ -153,6 +153,7 @@ export class AuthService {
     if (loadedUser.token) {
       this.user.next(loadedUser);
       const duration = loadedUser.tokenExpiry.getTime() - new Date().getTime();
+      console.log(duration + ' yo');
       this.autoLogout(duration);
     }
   }

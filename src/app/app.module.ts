@@ -53,7 +53,6 @@ import { AuthGuard } from './authentication/auth.guard';
     DataStorageService,
     RecipesResolverService,
     AuthService,
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
