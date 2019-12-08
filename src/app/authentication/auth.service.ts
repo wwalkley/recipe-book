@@ -141,6 +141,7 @@ export class AuthService {
     } = JSON.parse(localStorage.getItem('userData'));
 
     if (!localData) {
+      console.log('no');
       return;
     }
     const loadedUser = new User(
@@ -149,13 +150,15 @@ export class AuthService {
       localData._token,
       new Date(localData._tokenExpirationDate)
     );
+
     console.log(loadedUser);
+    console.log('yes');
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const duration: any =
+      console.log(new Date(localData._tokenExpirationDate).getTime());
+      const duration =
         new Date(localData._tokenExpirationDate).getTime() -
         new Date().getTime();
-      console.log(duration + ' yo');
       this.autoLogout(duration);
     }
   }
