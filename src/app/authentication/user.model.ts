@@ -5,17 +5,17 @@ export class User {
     // tslint:disable-next-line: variable-name
     private _token: string,
     // tslint:disable-next-line: variable-name
-    private _tokenExpiryDate: Date
+    private _tokenExpirationDate: Date
   ) {}
 
   get token() {
-    if (!this._tokenExpiryDate || new Date() > this._tokenExpiryDate) {
+    if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
       return null;
     }
     return this._token;
   }
 
   get tokenExpiry() {
-    return this._tokenExpiryDate;
+    return this._tokenExpirationDate;
   }
 }

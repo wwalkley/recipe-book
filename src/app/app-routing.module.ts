@@ -32,8 +32,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'shopping-list',
-    component: ShoppingListComponent
-    // canActivate: [AuthGuard]
+    component: ShoppingListComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'auth', component: AuthComponent }
 ];
