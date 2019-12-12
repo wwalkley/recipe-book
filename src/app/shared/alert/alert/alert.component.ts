@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
@@ -7,8 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
   @Input() info: string;
+  @Output() closeModal = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  onCloseModal() {
+    this.closeModal.emit();
+  }
 }
