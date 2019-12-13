@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef, Directive } from '@angular/core';
 
 @Directive({
-  selector: '[app-placeholder]'
+  selector: '[appPlaceholder]'
 })
 export class PlaceholderDirective implements OnInit {
   constructor(public viewContainerRef: ViewContainerRef) {}
