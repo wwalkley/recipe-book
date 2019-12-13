@@ -1,3 +1,4 @@
+import { PlaceholderDirective } from './shared/placeholder.directive';
 import { AuthService } from './authentication/auth.service';
 import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { DataStorageService } from './shared/data-storage.service';
@@ -24,7 +25,6 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { AuthInterceptorService } from './authentication/auth-interceptor.service';
 import { AuthGuard } from './authentication/auth.guard';
 import { AlertComponent } from './shared/alert/alert/alert.component';
-import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { PlaceholderComponent } from './shared/placeholder/placeholder.component
     AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
-    PlaceholderComponent
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -64,6 +64,7 @@ import { PlaceholderComponent } from './shared/placeholder/placeholder.component
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent]
 })
 export class AppModule {}
